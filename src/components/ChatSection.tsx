@@ -1,5 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { FiVideo } from "react-icons/fi";
 import { GoPaperclip } from "react-icons/go";
+import { HiOutlineDocumentDownload } from "react-icons/hi";
+import { LuCamera } from "react-icons/lu";
 import { VscSend } from "react-icons/vsc";
 
 interface Sender {
@@ -18,6 +21,7 @@ interface Chat {
 
 export default function ChatSection({ chats }: { chats: Chat[] }) {
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
     // Scroll to the bottom when chats update
@@ -30,7 +34,7 @@ export default function ChatSection({ chats }: { chats: Chat[] }) {
   console.log(chats);
 
   return (
-    <div className="flex flex-col mt-5 pt-10 overflow-auto">
+    <div className="flex flex-col pt-10 overflow-auto">
       {/* chats */}
       <div
         ref={chatContainerRef}
@@ -61,15 +65,30 @@ export default function ChatSection({ chats }: { chats: Chat[] }) {
       </div>
 
       {/* chatbox */}
-      <div className="mt-10 mb-2 p-4 bg-white rounded-lg flex items-center">
+      <div className="relative mt-10 mb-2 p-4 bg-white rounded-lg flex items-center">
+        <div className="absolute bottom-10 right-0 mb-2 rounded-full p-2 flex space-x-4">
+          {showMenu && (
+            <div className="z-10  flex flex-col bg-[#008000] text-white rounded-full px-4 py-3">
+              <div className="flex items-center gap-3">
+                <LuCamera className="w-5 h-5" />
+                <FiVideo className="w-5 h-5" />
+                <HiOutlineDocumentDownload className="w-5 h-5" />
+              </div>
+            </div>
+          )}
+        </div>
         <input
           type="text"
           className="flex-grow bg-transparent outline-none text-gray-600 placeholder-gray-400 w-[75%] "
-          placeholder="Type your message"
+          placeholder="Reply to @Rohit Yadav"
         />
         <div className="flex gap-4">
-          <GoPaperclip className="w-5 h-5 cursor-pointer" />
-          <VscSend className="w-5 h-5 cursor-pointer" />
+          <button onClick={() => setShowMenu(!showMenu)}>
+            <GoPaperclip className="w-5 h-5 cursor-pointer" />
+          </button>
+          <button>
+            <VscSend className="w-5 h-5" />
+          </button>
         </div>
       </div>
     </div>
