@@ -52,12 +52,12 @@ export default function ChatSection({ chats }: { chats: Chat[] }) {
               <div className="flex gap-2">
                 <img
                   src={chat.sender.image}
-                  alt=""
-                  className="rounded-full w-7 h-7"
+                  alt="profile"
+                  className="rounded-full w-10 h-10"
                 />
-                <h1 className="bg-white text-[#606060] font-normal p-2 mr-5 text-sm rounded-r-xl rounded-bl-xl">
+                <div className="bg-white text-[#606060] font-normal p-2 mr-5 text-sm rounded-r-xl rounded-bl-xl">
                   {chat.message}
-                </h1>
+                </div>
               </div>
             )}
           </div>
