@@ -38,18 +38,18 @@ export default function ChatSection({ chats }: { chats: Chat[] }) {
       {/* chats */}
       <div
         ref={chatContainerRef}
-        className="overflow-auto no-scrollbar flex flex-col gap-5"
+        className="overflow-auto no-scrollbar grid grid-cols-1 gap-5"
       >
         {chats?.map((chat, idx) => (
-          <div key={idx} className="flex">
+          <div key={idx} className="grid grid-cols-1">
             {chat.sender.self ? (
-              <div className="flex justify-end items-end">
+              <div className="ml-10 justify-self-end max-w-5xl">
                 <h1 className="bg-[#1C63D5] text-white font-normal p-2 ml-12 text-sm rounded-l-xl rounded-tr-xl">
                   {chat.message}
                 </h1>
               </div>
             ) : (
-              <div className="flex gap-2">
+              <div className="flex gap-2 mr-10 max-w-5xl">
                 <img
                   src={chat.sender.image}
                   alt="profile"
