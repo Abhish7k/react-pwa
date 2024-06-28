@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import axios, { AxiosResponse } from "axios";
+import ChatSection from "./components/ChatSection";
 
 export default function App() {
   const [data, setData] = useState<AxiosResponse | null>(null);
@@ -16,14 +17,14 @@ export default function App() {
   }, []);
 
   return (
-    <div>
-      <div className="h-[90vh] w-[90vw] my-[10%] md:h-[700px] md:w-[350px] md:my-[5%] bg-[#FAF9F4] mx-auto rounded-3xl p-5">
-        <Header
-          name={data?.data.name}
-          from={data?.data.from}
-          to={data?.data.to}
-        />
-      </div>
+    <div className="h-[90vh] w-[90vw] my-[10%] md:h-[700px] md:w-[350px] md:my-[5%] bg-[#FAF9F4] mx-auto rounded-3xl p-5 flex flex-col justify-between">
+      <Header
+        name={data?.data.name}
+        from={data?.data.from}
+        to={data?.data.to}
+      />
+
+      <ChatSection chats={data?.data.chats} />
     </div>
   );
 }

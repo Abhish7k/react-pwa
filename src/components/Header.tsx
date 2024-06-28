@@ -29,7 +29,7 @@ const ChatScreen = ({ name, from, to }: Props) => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div>
+    <div className="border-b pb-5">
       {/* Topbar */}
       <div className="flex justify-between p-2">
         <div className="flex items-center gap-4">
