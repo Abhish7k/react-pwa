@@ -17,7 +17,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="h-[100vh] w-[100vw] pb-10 md:h-[700px] md:w-[350px] md:my-[5%] bg-[#FAF9F4] mx-auto rounded-3xl p-5 flex flex-col justify-between">
+    <div className="h-screen w-screen md:h-[700px] md:w-[350px] md:my-[5%] bg-[#FAF9F4] mx-auto rounded-3xl p-5 flex flex-col justify-between">
       <Header
         name={data?.data.name}
         from={data?.data.from}
